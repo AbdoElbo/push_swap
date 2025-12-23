@@ -6,11 +6,11 @@
 #    By: aelbouaz <aelbouaz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/07 16:20:34 by aelbouaz          #+#    #+#              #
-#    Updated: 2025/10/15 15:32:46 by aelbouaz         ###   ########.fr        #
+#    Updated: 2025/12/23 15:43:23 by aelbouaz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 PUSH_SWAP_SRCS = operations.c helper_funcs_1.c helper_funcs_2.c \
 	push_swap.c list_funcs.c error_handle.c ft_split_push.c
@@ -23,32 +23,51 @@ LIBFT = $(LIBFT_DIR)libft.a
 PRINTF_DIR = ft_printf/
 PRINTF = $(PRINTF_DIR)libftprintf.a
 
-CC = cc
-
 HEADERS = $(PRINTF_DIR)ft_printf.h $(LIBFT_DIR)libft.h
+INCLUDES = -I$(PRINTF_DIR) -I$(LIBFT_DIR)
 
-all: $(NAME)
+CC = cc
+MAKE = make
+
+RED = \033[0;31m
+GREEN = \033[0;32m
+BLUE = \033[0;34m
+RESET = \033[0m
+
+all: $(NAME) DONE_MSG
+
+DONE_MSG:
+	@printf "$(RED)\nDONE$(RESET)"
+MSG:
+	@printf "$(GREEN)Compiling Push_swap$(RESET)"
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
 
 $(PRINTF):
-	make -C $(PRINTF_DIR)
+	@$(MAKE) --no-print-directory -C $(PRINTF_DIR)
 
-$(NAME): $(LIBFT) $(PRINTF) $(PUSH_SWAP_OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(PUSH_SWAP_OBJ) -L$(PRINTF_DIR) -lftprintf -L$(LIBFT_DIR) -lft
+$(NAME): $(LIBFT) $(PRINTF) MSG $(PUSH_SWAP_OBJ)
+	@$(CC) $(CFLAGS) $(PUSH_SWAP_OBJ) \
+		-L$(PRINTF_DIR) -lftprintf \
+		-L$(LIBFT_DIR) -lft \
+		-o $(NAME)
 
 %.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -I$(LIBFT_DIR) -I$(PRINTF_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@printf "$(GREEN).$(RESET)"
 
 clean:
-	make -C $(PRINTF_DIR) clean
-	rm -f $(PUSH_SWAP_OBJ)
+	@$(MAKE) --no-print-directory -C $(PRINTF_DIR) clean
+	@rm -f $(PUSH_SWAP_OBJ)
+	@printf "$(BLUE)Cleaned Up Libft objects$(RESET)\n"
+	@printf "$(BLUE)Cleaned Up ft_printf objects$(RESET)\n"
+	@printf "$(BLUE)Cleaned Up Push_swap$(RESET)\n"
 
 fclean: clean
-	make -C $(PRINTF_DIR) fclean
-	rm -f $(NAME)
+	@$(MAKE) --no-print-directory -C $(PRINTF_DIR) fclean
+	@rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re test
+.PHONY: all clean fclean re MSG

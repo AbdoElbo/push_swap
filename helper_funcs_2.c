@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   helper_funcs_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gekko <gekko@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelbouaz <aelbouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 16:55:15 by aelbouaz          #+#    #+#             */
-/*   Updated: 2025/10/21 23:48:43 by gekko            ###   ########.fr       */
+/*   Updated: 2025/12/23 15:08:39 by aelbouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	assign_index(t_list **stack_copy)
+void	assign_index(p_list **stack_copy)
 {
-	t_list			*copy;
+	p_list			*copy;
 	unsigned long	i;
 
 	bubble_sort(stack_copy);
@@ -28,9 +28,9 @@ void	assign_index(t_list **stack_copy)
 	}
 }
 
-void	free_stack(t_list **stack)
+void	free_stack(p_list **stack)
 {
-	t_list	*temp;
+	p_list	*temp;
 
 	if (!(*stack) || !stack)
 		return ;
@@ -42,10 +42,10 @@ void	free_stack(t_list **stack)
 	}
 }
 
-void	index_main_stack_a(t_list **stack_a, t_list **stack_copy)
+void	index_main_stack_a(p_list **stack_a, p_list **stack_copy)
 {
-	t_list	*main;
-	t_list	*copy;
+	p_list	*main;
+	p_list	*copy;
 
 	main = *stack_a;
 	while (main)
@@ -62,7 +62,7 @@ void	index_main_stack_a(t_list **stack_a, t_list **stack_copy)
 	free_stack(stack_copy);
 }
 
-void	sort_three(t_list **stack_a, int num)
+void	sort_three(p_list **stack_a, int num)
 {
 	int	first;
 	int	second;
@@ -77,9 +77,9 @@ void	sort_three(t_list **stack_a, int num)
 		swap_a(stack_a);
 }
 
-void	sort_five(t_list **stack_a, t_list **stack_b, int num)
+void	sort_five(p_list **stack_a, p_list **stack_b, int num)
 {
-	t_list	*temp;
+	p_list	*temp;
 	int		i;
 
 	i = 0;

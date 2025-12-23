@@ -6,15 +6,15 @@
 /*   By: aelbouaz <aelbouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 20:13:56 by gekko             #+#    #+#             */
-/*   Updated: 2025/10/20 15:45:09 by aelbouaz         ###   ########.fr       */
+/*   Updated: 2025/12/23 15:08:21 by aelbouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(t_list **stack_a)
+void	swap_a(p_list **stack_a)
 {
-	t_list	*lst;
+	p_list	*lst;
 	int		temp_num;
 	int		temp_index;
 
@@ -30,9 +30,9 @@ void	swap_a(t_list **stack_a)
 	ft_printf("sa\n");
 }
 
-void	push_a(t_list **stack_a, t_list **stack_b)
+void	push_a(p_list **stack_a, p_list **stack_b)
 {
-	t_list	*node;
+	p_list	*node;
 
 	if (!stack_b || !*stack_b)
 		return ;
@@ -43,9 +43,9 @@ void	push_a(t_list **stack_a, t_list **stack_b)
 	ft_printf("pa\n");
 }
 
-void	push_b(t_list **stack_b, t_list **stack_a)
+void	push_b(p_list **stack_b, p_list **stack_a)
 {
-	t_list	*node;
+	p_list	*node;
 
 	if (!stack_a || !*stack_a)
 		return ;
@@ -56,10 +56,10 @@ void	push_b(t_list **stack_b, t_list **stack_a)
 	ft_printf("pb\n");
 }
 
-void	rotate_a(t_list **stack_a)
+void	rotate_a(p_list **stack_a)
 {
-	t_list	*temp;
-	t_list	*node;
+	p_list	*temp;
+	p_list	*node;
 
 	if (!stack_a || !*stack_a || !(*stack_a)->next)
 		return ;
@@ -73,17 +73,17 @@ void	rotate_a(t_list **stack_a)
 	ft_printf("ra\n");
 }
 
-void	reverse_rotate_a(t_list **stack_a)
+void	reverse_rotate_a(p_list **stack_a)
 {
-	t_list	*lst;
-	t_list	*node;
+	p_list	*lst;
+	p_list	*node;
 
 	if (!stack_a || !*stack_a || !(*stack_a)->next)
 		return ;
 	lst = *stack_a;
 	while (lst->next->next)
 		lst = lst->next;
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(p_list));
 	if (!node)
 		return ;
 	node->num = lst->next->num;

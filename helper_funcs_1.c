@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   helper_funcs_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gekko <gekko@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelbouaz <aelbouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 16:29:50 by aelbouaz          #+#    #+#             */
-/*   Updated: 2025/10/21 23:55:08 by gekko            ###   ########.fr       */
+/*   Updated: 2025/12/23 15:08:46 by aelbouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	bubble_sort(t_list **stack_a)
+void	bubble_sort(p_list **stack_a)
 {
 	int		change;
 	int		temp;
-	t_list	*lst;
+	p_list	*lst;
 
 	if (!(*stack_a))
 		return ;
@@ -39,10 +39,10 @@ void	bubble_sort(t_list **stack_a)
 	}
 }
 
-int	add_node(char *str, t_list **stack)
+int	add_node(char *str, p_list **stack)
 {
 	int		number;
-	t_list	*new_node;
+	p_list	*new_node;
 
 	number = ft_atoi(str);
 	new_node = ft_lstnew(number);
@@ -52,7 +52,7 @@ int	add_node(char *str, t_list **stack)
 	return (1);
 }
 
-int	initialize(int argc, char **argv, t_list **stack)
+int	initialize(int argc, char **argv, p_list **stack)
 {
 	int		i;
 	int		n;
@@ -79,9 +79,9 @@ int	initialize(int argc, char **argv, t_list **stack)
 	return (1);
 }
 
-int	stack_sorted(t_list *stack, int size)
+int	stack_sorted(p_list *stack, int size)
 {
-	t_list	*temp;
+	p_list	*temp;
 	int		size_2;
 
 	temp = stack;
@@ -97,7 +97,7 @@ int	stack_sorted(t_list *stack, int size)
 	return (1);
 }
 
-void	exec_operations(t_list **stack_a, t_list **stack_b, int size)
+void	exec_operations(p_list **stack_a, p_list **stack_b, int size)
 {
 	int		bit;
 	int		i;

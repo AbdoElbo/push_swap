@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_handle.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gekko <gekko@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aelbouaz <aelbouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/03 19:03:13 by aelbouaz          #+#    #+#             */
-/*   Updated: 2025/10/21 23:54:00 by gekko            ###   ########.fr       */
+/*   Updated: 2025/12/23 15:11:41 by aelbouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ int	non_digit(int argc, char **argv)
 	return (0);
 }
 
-int	duplicate(t_list *stack)
+int	duplicate(p_list *stack)
 {
-	t_list	*temp_1;
-	t_list	*temp_2;
+	p_list	*temp_1;
+	p_list	*temp_2;
 
 	temp_1 = stack;
 	while (temp_1)

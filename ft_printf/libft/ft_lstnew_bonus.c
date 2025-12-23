@@ -1,61 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_funcs.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aelbouaz <aelbouaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 17:40:02 by aelbouaz          #+#    #+#             */
-/*   Updated: 2025/12/23 15:08:31 by aelbouaz         ###   ########.fr       */
+/*   Updated: 2025/05/05 19:14:31 by aelbouaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-unsigned long	ft_lstsize(p_list *lst)
+t_list	*ft_lstnew(void *content)
 {
-	unsigned long	num;
+	t_list	*node;
 
-	num = 0;
-	while (lst != NULL)
-	{
-		num++;
-		lst = lst -> next;
-	}
-	return (num);
-}
-
-p_list	*ft_lstnew(int number)
-{
-	p_list	*node;
-
-	node = malloc(sizeof(p_list));
+	node = malloc(sizeof(t_list));
 	if (node == NULL)
 		return (NULL);
-	node->num = number;
+	node->content = content;
 	node->next = NULL;
 	return (node);
-}
-
-void	ft_lstadd_back(p_list **lst, p_list *new)
-{
-	p_list	*temp;
-
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	temp = *lst;
-	while (temp->next != NULL)
-	{
-		temp = temp->next;
-	}
-	temp->next = new;
-}
-
-void	ft_lstadd_front(p_list **lst, p_list *new)
-{
-	new->next = *lst;
-	*lst = new;
 }
